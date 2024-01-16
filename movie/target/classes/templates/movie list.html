@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movie list style.css}">
+</head>
+<body>
+<h2>Contacts</h2>
+<a th:href="@{/addMovie}" id="addmovie">New Contact</a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Author</th>
+        <th>Total Time</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="movie : ${movies}">
+        <td th:text="${movie.name}"></td>
+        <td th:text="${movie.rating}"></td>
+        <td th:text="${movie.author}"></td>
+        <td th:text="${T(com.example.movie.movie.domain.TimeConverter).convertSeconds(movie.totalTime)}"></td>
+        <td><a th:href="@{/updateForm/{id}(id=${movie.id})}" id="update">Update</a></td>
+        <td><a th:href="@{/deleteForm/{id}(id=${movie.id})}" id="delete">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

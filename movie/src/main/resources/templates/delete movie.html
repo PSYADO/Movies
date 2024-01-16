@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Movie</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/delete movie style.css}">
+</head>
+<body>
+
+<div class="container">
+  <h2>Delete Movie</h2>
+  <p>Are you sure that you want to delete <span th:text="${movie.name}"></span></p>
+  <form th:action="@{/delete/{id}(id=${movie.id})}" th:object="${movie}" method="post">
+    <span><button type="submit">Delete Movie</button></span>
+    <span><a th:href="@{/movies}">Back</a></span>
+  </form>
+</div>
+
+</body>
+</html>
